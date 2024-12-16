@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         hostname: "cdn.dribbble.com",
         pathname: "/**",
         protocol: "https",
+      },
+      {
+        hostname: "encrypted-tbn0.gstatic.com",
+        pathname: "/**",
+        protocol: "https",
       }
     ]
   },

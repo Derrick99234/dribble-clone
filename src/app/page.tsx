@@ -9,7 +9,6 @@ import UIpostCard from "@/components/UIpostCard/UIpostCard";
 import UImodel from "@/model/uipost.model.json"
 import ImageSliderModel from "@/model/image-slider.model.json"
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
-import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
 import Footer from "@/components/Footer/Footer";
 
@@ -23,29 +22,6 @@ export default function Home() {
     { value: 1, label: "Popular" },
     { value: 2, label: "New & Noteworthy" },
   ]
-
-  const responsive = {
-    superLargeDesktop: {
-      // when window width is above 1800px
-      breakpoint: { max: 4000, min: 1800 },
-      items: 5
-    },
-    desktop: {
-      // when window width is above 1200px
-      breakpoint: { max: 1800, min: 1200 },
-      items: 4
-    },
-    tablet: {
-      // when window width is above 768px
-      breakpoint: { max: 1200, min: 768 },
-      items: 3
-    },
-    mobile: {
-      // when window width is below 768px
-      breakpoint: { max: 768, min: 0 },
-      items: 2
-    }
-  };
   
 
   return (

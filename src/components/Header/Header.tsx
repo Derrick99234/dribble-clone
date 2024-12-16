@@ -1,8 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React from 'react'
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 function Header() {
+    const router = useRouter()
   return (
     <header className='flex items-center justify-between px-8 py-4'>
         <div className="flex items-center justify-center gap-10">
@@ -23,8 +25,8 @@ function Header() {
             </nav>
         </div>
         <div className="flex gap-5 text-sm font-bold">
-            <button type="button">Sign up</button>
-            <button type="button" className='bg-[#0D0C22] text-white py-3 px-6 rounded-3xl'>Log in</button>
+            <button type="button" onClick={() => router.push("/signup")}>Sign up</button>
+            <button type="button" className='bg-[#0D0C22] text-white py-3 px-6 rounded-3xl' onClick={() => router.push("/signin")}>Log in</button>
         </div>
     </header>
   )
