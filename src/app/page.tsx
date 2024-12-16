@@ -72,7 +72,7 @@ export default function Home() {
           }
         </div>
         <div className="flex justify-center mt-10">
-          <Link href="#" className='bg-[#0D0C22] text-xs font-semibold text-white py-3 px-5 rounded-3xl'>Sign up to continue</Link>
+          <Link href="/signup" className='bg-[#0D0C22] text-xs font-semibold text-white py-3 px-5 rounded-3xl'>Sign up to continue</Link>
         </div>
       </section>
       <section className="flex carousel-track gap-4">

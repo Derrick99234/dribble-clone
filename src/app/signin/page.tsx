@@ -80,7 +80,7 @@ function Signin() {
         {message && <p className="text-xs text-red-500">{message}</p>}
         <p className="mt-4 text-xs text-gray-700 text-center">
           Don&apos;t have an account?{" "} 
-          <Link href="#" className="underline">
+          <Link href="/signup" className="underline">
             Sign In
           </Link>
         </p>

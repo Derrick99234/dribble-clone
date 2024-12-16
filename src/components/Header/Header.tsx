@@ -8,7 +8,6 @@ import { PiChatCircleTextLight } from "react-icons/pi";
 import { IoMdNotificationsOutline } from "react-icons/io";
 function Header() {
     const router = useRouter()
-
     const [emailOrUsername, setEmailOrUsername] = React.useState('');
 
     useEffect(() => {
@@ -67,7 +66,7 @@ function Header() {
                                     />
                                     <div className="w-3 h-3 border-2 border-white bg-green-300 rounded-full absolute bottom-0 right-0"></div>
                                 </div>
-                                <h3 className="text-center font-bold mt-2 mb-6">Olatunbosun Olashubomi</h3>
+                                <h3 className="text-center font-bold mt-2 mb-6">{emailOrUsername}</h3>
                                 <Link href="#" className="font-normal">
                                     Settings
                                 </Link>
