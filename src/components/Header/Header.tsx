@@ -6,18 +6,17 @@ import React, { useEffect } from 'react'
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { PiChatCircleTextLight } from "react-icons/pi";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import { useUserData } from '@/context/UserContext';
 function Header() {
     const router = useRouter()
-    const [emailOrUsername, setEmailOrUsername] = React.useState('');
+    const { userData } = useUserData()
+    const [profileName, setProfileName] = React.useState('');
 
     useEffect(() => {
-        const user = localStorage.getItem("user")
-        if (user){
-            const parsedUser = JSON.parse(user) as { emailOrUsername: string };
-            setEmailOrUsername(parsedUser.emailOrUsername);
+        if (userData && userData.emailOrUsername){ 
+            setProfileName(userData.emailOrUsername);
         }
-
-    }, []);
+    }, [userData]);
   return (
     <header className='flex items-center justify-between px-8 py-4'>
         <div className="flex items-center justify-center gap-10">
@@ -39,7 +38,7 @@ function Header() {
         </div>
         <div className="flex gap-5 text-sm font-bold items-center">
             {
-                emailOrUsername? (
+                profileName? (
                     <>
                         <PiChatCircleTextLight className='text-2xl' />
                         <IoMdNotificationsOutline className='text-2xl' />
@@ -66,7 +65,7 @@ function Header() {
                                     />
                                     <div className="w-3 h-3 border-2 border-white bg-green-300 rounded-full absolute bottom-0 right-0"></div>
                                 </div>
-                                <h3 className="text-center font-bold mt-2 mb-6">{emailOrUsername}</h3>
+                                <h3 className="text-center font-bold mt-2 mb-6">{profileName}</h3>
                                 <Link href="#" className="font-normal">
                                     Settings
                                 </Link>

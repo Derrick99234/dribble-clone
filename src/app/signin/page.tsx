@@ -1,4 +1,5 @@
 "use client"
+import { useUserData } from '@/context/UserContext';
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
@@ -10,8 +11,7 @@ function Signin() {
   const [password, setPassword] = React.useState('');
   const [message, setMessage] = React.useState('');
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
-
-
+  const { setUserData } = useUserData()
   const router = useRouter()
 
   const handleSubmit = (e: FormEvent) => {
@@ -29,8 +29,7 @@ function Signin() {
       return;
     }
     setMessage('Form submitted successfully!');
-    console.log({ emailOrUsername, password });
-    localStorage.setItem('user', JSON.stringify({emailOrUsername, password}))
+    setUserData({ emailOrUsername, password });
     router.push('/');
   };
 
