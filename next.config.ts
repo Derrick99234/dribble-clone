@@ -15,7 +15,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
       }
     ]
-  }
+  },
+  experimental: {
+    serverComponentsExternalPackages: ['swiper'],
+  },
 };
 
 export default nextConfig;

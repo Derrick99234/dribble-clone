@@ -1,3 +1,4 @@
+"use client";
 import Dropdown from "@/components/Dropdown/Dropdown";
 import Header from "@/components/Header/Header";
 import Image from "next/image";
@@ -6,6 +7,12 @@ import { IoFilterOutline } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
 import UIpostCard from "@/components/UIpostCard/UIpostCard";
 import UImodel from "@/model/uipost.model.json"
+import ImageSliderModel from "@/model/image-slider.model.json"
+import ImageSlider from "@/components/ImageSlider/ImageSlider";
+import Carousel from "react-multi-carousel";
+import 'react-multi-carousel/lib/styles.css';
+import Footer from "@/components/Footer/Footer";
+
 export default function Home() {
   const searchBarOptions = [
     { value: 1, label: "Snap" },
@@ -16,6 +23,30 @@ export default function Home() {
     { value: 1, label: "Popular" },
     { value: 2, label: "New & Noteworthy" },
   ]
+
+  const responsive = {
+    superLargeDesktop: {
+      // when window width is above 1800px
+      breakpoint: { max: 4000, min: 1800 },
+      items: 5
+    },
+    desktop: {
+      // when window width is above 1200px
+      breakpoint: { max: 1800, min: 1200 },
+      items: 4
+    },
+    tablet: {
+      // when window width is above 768px
+      breakpoint: { max: 1200, min: 768 },
+      items: 3
+    },
+    mobile: {
+      // when window width is below 768px
+      breakpoint: { max: 768, min: 0 },
+      items: 2
+    }
+  };
+  
 
   return (
     <>
@@ -61,7 +92,7 @@ export default function Home() {
         <div className="grid grid-cols-3 gap-5">
           {
             UImodel.map(UIpost => (
-              <UIpostCard imagesLInk={UIpost.imagesLInk} key={UIpost.id} title={UIpost.title} />
+              <UIpostCard imagesLInk={UIpost.imageLink} key={UIpost.id} title={UIpost.title} />
             ))
           }
         </div>
@@ -69,6 +100,14 @@ export default function Home() {
           <Link href="#" className='bg-[#0D0C22] text-xs font-semibold text-white py-3 px-5 rounded-3xl'>Sign up to continue</Link>
         </div>
       </section>
+      <section className="flex carousel-track gap-4">
+          {
+            ImageSliderModel.map(imageSlider => (
+                <ImageSlider imagesLInk={imageSlider.imageLink} key={imageSlider.id} title={imageSlider.title} />
+            ))
+          }
+      </section>
+      <Footer/>
     </>
   );
 }
