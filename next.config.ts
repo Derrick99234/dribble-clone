@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "miro.medium.com",
         pathname: "/v2/**",
         protocol: "https",
+      },
+      {
+        hostname: "cdn.dribbble.com",
+        pathname: "/**",
+        protocol: "https",
       }
     ]
   }

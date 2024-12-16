@@ -9,9 +9,12 @@ interface Option {
 interface DropdownProps {
   options: Option[];
   onSelect?: (option: Option) => void;
+  otherStyles?: string
+  listStyle?: string
+  defaultLabel: string
 }
 
-export default function Dropdown({ options, onSelect }: DropdownProps) {
+export default function Dropdown({ options, onSelect, otherStyles, defaultLabel, listStyle }: DropdownProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selected, setSelected] = useState<Option | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -40,10 +43,10 @@ export default function Dropdown({ options, onSelect }: DropdownProps) {
   return (
     <div className="relative mr-4" ref={dropdownRef}>
       <button
-        className="flex justify-between items-center gap-1 text-sm"
+        className={`flex justify-between items-center gap-1 text-sm ${otherStyles}`}
         onClick={toggleDropdown}
       >
-        {selected ? selected.label : "Snap"}
+        {selected ? selected.label : defaultLabel}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className={`h-5 w-5 text-gray-500 transition-transform ${
@@ -62,7 +65,7 @@ export default function Dropdown({ options, onSelect }: DropdownProps) {
         </svg>
       </button>
       {isOpen && (
-        <ul className="absolute z-10 mt-1 w-36 bg-white border border-gray-300 rounded-md shadow-lg py-3 text-sm">
+        <ul className={`absolute z-10 mt-1 w-36 bg-white border border-gray-300 rounded-md shadow-lg py-3 text-sm ${listStyle}`}>
           {options.map((option) => (
             <li
               key={option.value}
