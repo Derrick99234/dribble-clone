@@ -1,8 +1,39 @@
+"use client"
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import { useRouter } from 'next/navigation';
+import React, { FormEvent } from 'react'
 
 function Signin() {
+
+  const [emailOrUsername, setEmailOrUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
+
+
+  const router = useRouter()
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setMessage('');
+    if (!emailOrUsername) {
+      setMessage('Username or Email is required');
+      return;
+    } 
+    if (!password) {
+      setMessage('Password is required');
+      return;
+    } else if (password.length < 8) {
+      setMessage('Password must be at least 8 characters long');
+      return;
+    }
+    setMessage('Form submitted successfully!');
+    console.log({ emailOrUsername, password });
+    localStorage.setItem('user', JSON.stringify({emailOrUsername, password}))
+    router.push('/');
+  };
+
   return (
     <section className='flex min-h-screen'>
         <div className="hidden lg:block w-[24%] relative overflow-hidden h-screen">
@@ -24,7 +55,7 @@ function Signin() {
               @nguyenhut
             </div>
       </div>
-      <form className="w-full lg:w-[40%] flex flex-col justify-center px-6 lg:px-24">
+      <form className="w-full lg:w-[40%] flex flex-col justify-center px-6 lg:px-24" onSubmit={handleSubmit}>
         <h1 className="text-2xl font-bold mb-8">Sign in to Dribble</h1>
         <button className="w-full flex items-center justify-center py-3 mb-4 rounded-lg text-sm font-semibold border transition">
           <Image
@@ -42,10 +73,11 @@ function Signin() {
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
         <label htmlFor="username" className='text-sm font-bold text-gray-800 mb-2'>Username or Email</label>
-        <input type="text" className='border rounded-lg px-5 py-3 outline-none text-sm' />
+        <input type="text" className='border rounded-lg px-5 py-3 outline-none text-sm' onChange={(e) => setEmailOrUsername(e.target.value)} />
         <label htmlFor="password" className='text-sm font-bold text-gray-800 mb-2 mt-7 flex justify-between'>Password <Link href="" className='font-normal underline'>Forgot?</Link></label>
-        <input type="password" className='border rounded-lg px-5 py-3 outline-none text-sm' />
+        <input type={`${isPasswordVisible ? "text" : "password"}`} className='border rounded-lg px-5 py-3 outline-none text-sm' onChange={(e) => setPassword(e.target.value)} onFocus={() => setIsPasswordVisible(true)} onBlur={() => setIsPasswordVisible(false)} />
         <button className="w-full flex items-center justify-center py-3 mb-4 rounded-lg text-sm font-semibold text-white bg-gray-900 transition mt-5">Sign in</button>
+        {message && <p className="text-xs text-red-500">{message}</p>}
         <p className="mt-4 text-xs text-gray-700 text-center">
           Don&apos;t have an account?{" "} 
           <Link href="#" className="underline">
