@@ -8,7 +8,7 @@ function Logout() {
     useEffect(() => {
       sessionStorage.clear();
       router.push('/signin')
-    }, [])
+    }, [router])
     
   return (
     <div className='flex justify-center items-center h-screen text-lg font-semibold'>Logout...</div>

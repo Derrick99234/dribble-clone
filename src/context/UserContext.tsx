@@ -3,8 +3,8 @@ import { UserData } from "@/interface/types";
 import React, { createContext, Dispatch, useContext, useEffect, useState, } from "react";
 
 interface UserContextType {
-  userData: any;
-  setUserData: Dispatch<any>
+  userData: UserData | null;
+  setUserData: Dispatch<UserData>
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
