@@ -60,7 +60,7 @@ function Signup() {
         </p>
         <p className="mt-4 text-xs text-gray-700 text-center">
           Already have an account?{" "}
-          <Link href="#" className="underline">
+          <Link href="/signin" className="underline">
             Sign In
           </Link>
         </p>

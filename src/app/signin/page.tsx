@@ -20,6 +20,10 @@ function Signin() {
     if (!emailOrUsername) {
       setMessage('Username or Email is required');
       return;
+    }
+    if (emailOrUsername.trim().includes(' ')) {
+      setMessage('Username or Email must not contain any spaces');
+      return;
     } 
     if (!password) {
       setMessage('Password is required');
@@ -30,6 +34,7 @@ function Signin() {
     }
     setMessage('Form submitted successfully!');
     setUserData({ emailOrUsername, password });
+    sessionStorage.setItem('userData', JSON.stringify({ emailOrUsername, password }))
     router.push('/');
   };
 

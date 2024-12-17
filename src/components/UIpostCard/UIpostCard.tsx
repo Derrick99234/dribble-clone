@@ -9,7 +9,7 @@ interface UIpostCardProps {
 
 function UIpostCard({imagesLInk, title}: UIpostCardProps) {
   return (
-    <div className='relative w-[25rem] rounded-lg overflow-hidden h-[20rem] group'>
+    <div className='relative max-w-[25rem] w-full rounded-lg overflow-hidden h-[20rem] group'>
         <Image 
             src={imagesLInk}
             alt={title}

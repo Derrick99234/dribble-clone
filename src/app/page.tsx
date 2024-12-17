@@ -28,8 +28,8 @@ export default function Home() {
       <Header/>
       <section className="flex items-center justify-center pt-10">
         <div className="flex flex-col gap-8 items-center max-w-[43rem]">
-          <h1 className="text-6xl font-serif text-center w-4/5">Discover the world&apos;s top designers!</h1>
-          <p className="text-base text-center w-4/5">
+          <h1 className="text-6xl font-serif text-center w-4/5 max-[480px]:text-3xl">Discover the world&apos;s top designers!</h1>
+          <p className="text-base text-center w-4/5 max-[480px]:text-sm">
             Explore work from the most talented and accomplished designers ready to take on your next project
           </p>
           <div className="flex bg-gray-100 w-4/5 h-12 rounded-3xl items-center justify-center p-1 border-[3px] border-transparent hover:border-pink-200 hover:bg-white transition-colors duration-200">
@@ -37,7 +37,7 @@ export default function Home() {
             <Dropdown options={searchBarOptions} defaultLabel="Shots" />
             <CiSearch className="text-white bg-pink-500 w-9 h-9 rounded-full p-1" />
           </div>
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-2 max-[480px]:flex-wrap">
             <span className="bg-gray-100 text-[0.8rem] px-3 py-[0.1rem] rounded-3xl">Trending searches</span>
             <span className="bg-gray-100 text-[0.8rem] px-3 py-[0.1rem] rounded-3xl">landing page</span>
             <span className="bg-gray-100 text-[0.8rem] px-3 py-[0.1rem] rounded-3xl">e-commerce</span>
@@ -48,10 +48,10 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="p-20">
+      <section className="p-20 max-[820px]:px-8">
         <div className="flex items-center justify-between mb-10">
           <Dropdown options={categoryDropdown} otherStyles="border py-1 px-4 rounded-md font-medium text-xs" defaultLabel="Popular" listStyle="w-[11rem]" />
-          <div className="flex font-semibold text-sm gap-10">
+          <div className="flex font-semibold text-sm gap-10 max-[820px]:hidden">
             <Link href="">Discover</Link>
             <Link href="">Animation</Link>
             <Link href="">Branding</Link>
@@ -64,7 +64,7 @@ export default function Home() {
           </div>
           <button className="flex items-center gap-2 text-sm"><IoFilterOutline />Filters</button>
         </div>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-3 gap-5 max-[820px]:grid-cols-2 max-[480px]:grid-cols-1">
           {
             UImodel.map(UIpost => (
               <UIpostCard imagesLInk={UIpost.imageLink} key={UIpost.id} title={UIpost.title} />
